@@ -1,5 +1,3 @@
-<br/> <br/> <br/> <br/>
-
 <h1 style="text-align: center;">
 Is overpopulation misinterpreted by the media and global opinion?
 </h1>
@@ -28,6 +26,8 @@ Data Visualisation and Dashboarding
 6DATA004W
 </h4>
 
+<br/> <br/> <br/>
+
 # The Problem
 
 In recent years, the global population has been a topic of discussion
@@ -45,8 +45,7 @@ growth is a global catastrophic risk. “Top box” to the right shows the
 percentage who answered “Agree completely” or “Agree to some extent,”
 while “Bottom box” shows the percentage who answered “Disagree to some
 extent” or “Completely disagree”. Source: [Global Challenges Foundation,
-Global Catastrophic Risks and International Collaboration: Opinion Poll
-2020.](https://globalchallenges.org/wp-content/uploads/GCF_Global_Challenges_2020-High.pdf)</span>
+Global Catastrophic Risks and International Collaboration: Opinion Poll 2020.](https://globalchallenges.org/wp-content/uploads/GCF_Global_Challenges_2020-High.pdf)</span>
 
 > “The population of the world is growing at a fast rate, and it is
 > expected to reach 10 billion by 2050. This is a big problem, because
@@ -225,12 +224,6 @@ even reverse.
 
 # World Fertility vs Life Expectancy
 
-### Chart Note
-
-The presented chart displays the fertility rate and life expectancy in
-years. To facilitate comparison and identify any correlation, the
-fertility rate is multiplied by 10.
-
 ![](README_files/figure-markdown_github/fertility_life_expectancy-1.png)
 
 Apart from fertility rate, another factor that impacts global population
@@ -260,6 +253,8 @@ current population. Following that, the population is expected to
 decline to 10.35 billion people by 2100, which is a decrease of 0.8%
 from the peak in 14 years. While this decrease may not seem significant,
 it marks a turning point in the world’s population growth.
+
+![](README_files/figure-markdown_github/un_projections_world-1.png)
 
 Furthermore, if we compare the Central Europe and the Baltics charts, we
 can see some similarity. If this region is any indication of the world’s

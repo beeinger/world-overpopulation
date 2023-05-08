@@ -316,7 +316,7 @@ data_population_central_europe <- data_population_clean %>%
   filter(Country.Code == "CEB") %>%
   mutate(population = population / 1000000)
 
-ggplot() +
+ce_ba_p <- ggplot() +
   geom_line(data = data_population_central_europe, aes(x = year, y = population), color = "blue") +
   geom_smooth(data = data_population_central_europe, aes(x = year, y = population), color = "blue", method = "lm", se = TRUE, linetype = "dashed") +
   geom_smooth(data = filter(data_population_central_europe, year >= 1988), aes(x = year, y = population), color = "blue", method = "lm", se = TRUE, linetype = "dashed") +
@@ -334,6 +334,8 @@ ggplot() +
     breaks = seq(0, 1000, by = 2),
     labels = seq(0, 1000, by = 2)
   )
+
+print(ce_ba_p)
 
 #  the percentage increase in population since 1960 to the maximal value in the dataset before dropping
 increase_1960_max_value <- ((max(data_population_central_europe$population) - data_population_central_europe$population[1]) / data_population_central_europe$population[1]) %>%
@@ -431,10 +433,6 @@ Despite a much higher fertility rate in Africa compared to Europe & Central Asia
 
 # World Fertility vs Life Expectancy
 
-### Chart Note
-
-The presented chart displays the fertility rate and life expectancy in years. To facilitate comparison and identify any correlation, the fertility rate is multiplied by 10.
-
 ```{r fertility_life_expectancy, echo=FALSE, message = FALSE, fig.width=10}
 data_life_expectancy_clean <- clean_and_format_data("life_expectancy", "life_expectancy")
 
@@ -512,7 +510,7 @@ world_data_un <- data_un_projections_population %>%
   pivot_longer(cols = `2022`:`2100`, names_to = "year", values_to = "population") %>%
   mutate(year = as.integer(year), population = as.numeric(population) / 1000000)
 
-ggplot(world_data_un, aes(x = year, y = population)) +
+wp_un <- ggplot(world_data_un, aes(x = year, y = population)) +
   geom_line(color = "blue") +
   theme_minimal() +
   labs(
@@ -528,6 +526,8 @@ ggplot(world_data_un, aes(x = year, y = population)) +
     breaks = seq(0, 20, by = 0.25),
     labels = seq(0, 20, by = 0.25)
   )
+
+print(wp_un)
 
 max_population <- max(world_data_un$population) %>%
   round(2)
@@ -546,6 +546,10 @@ from_max_to_2100_drop <- ((max_population - population_2100) / max_population) %
 ```
 
 According to the UN Population Projections, the world population is expected to continue growing but at a decreasing rate and eventually stabilize. The projected peak population is estimated to be reached in `r max_population_year` with `r max_population` billion people, indicating an increase of `r from_min_to_max_increase` from the current population. Following that, the population is expected to decline to `r population_2100` billion people by 2100, which is a decrease of `r from_max_to_2100_drop` from the peak in `r (2100 - max_population_year)` years. While this decrease may not seem significant, it marks a turning point in the world's population growth.
+
+```{r un_projections_world, echo=FALSE, message = FALSE, fig.width=10}
+grid.arrange(wp_un, ce_ba_p, ncol = 2)
+```
 
 Furthermore, if we compare the Central Europe and the Baltics charts, we can see some similarity. If this region is any indication of the world's population growth, then it suggests that a significant decline in population is likely in the foreseeable future.
 
