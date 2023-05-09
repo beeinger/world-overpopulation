@@ -70,55 +70,6 @@ well as fertility rates and life expectancy, using R and R Markdown.
 Furthermore, we will evaluate the chosen technology and charting methods
 to ensure a comprehensive understanding of the topic at hand.
 
-# Data Preparation
-
-### World Bank data
-
-An initial exploratory analysis was conducted after preparing the data,
-which was mostly clean with some missing values for years before 1992.
-The data contained some regions and groups of countries, which were
-removed by filtering out rows with an empty string as the Region,
-indicating they were regions themselves. This data was separated in a
-metadata file and then inner joined with the population growth data on
-the Country.Code column, resulting in only country-level data.
-
-The country-level data was reshaped to a long format with each row
-representing a country and year. The population growth rate was
-calculated by multiplying the population by the growth rate and summing
-the results. Finally, the worldwide population growth rate was obtained
-by dividing the sum of the weighted growth rates by the sum of the
-population. The already calculated worldwide population growth rate was
-also saved in a separate dataset for comparison purposes.
-
-The libraries - `scales`, `dplyr`, `gridExtra` and `tidyverse` were used
-to prepare the data. The `scales` library was used to format the numbers
-in the plots, `dplyr` was used to reshape the data, `gridExtra` was used
-to arrange the plots in a grid and `tidyverse` was used to filter out
-the regions and groups of countries.
-
-Since the datasets from the World Bank data are in the same format, most
-of the analysis was abstracted away into a function that will be used
-further in the paper to prepare, clean and format the data for
-visualisations.
-
-### Other sources
-
-While most of the paper is based on data from the World Bank, there are
-also two other sources - United Nations and Our World in Data. These two
-sources are completely different from the World Bank and needed their
-own data preparation and cleaning. Also the data from the data from the
-UN came in Excel format, which needed another library - `readxl` to be
-read into R.
-
-Both of these were handled without creating abstraction functions as
-they were used only once in code, additionally the data from the Our
-World in Data was already in a long format, so it only needed to be
-cleaned, while the data from the UN needed to be reshaped to a long
-format, similarly to the World Bank data.
-
-More information about the data sources can be found in the Sources of
-Data chapter.
-
 # Population Worldwide
 
 ![](README_files/figure-markdown_github/population_worldwide-1.png)
@@ -340,13 +291,64 @@ policy-making, and individual actions. Together, we can shape a future
 that is not only optimistic but also truly transformative for
 generations to come.
 
-# Sources of Data
+# Further Reading
+
+## Data Preparation
+
+### World Bank data
+
+An initial exploratory analysis was conducted after preparing the data,
+which was mostly clean with some missing values for years before 1992.
+The data contained some regions and groups of countries, which were
+removed by filtering out rows with an empty string as the Region,
+indicating they were regions themselves. This data was separated in a
+metadata file and then inner joined with the population growth data on
+the Country.Code column, resulting in only country-level data.
+
+The country-level data was reshaped to a long format with each row
+representing a country and year. The population growth rate was
+calculated by multiplying the population by the growth rate and summing
+the results. Finally, the worldwide population growth rate was obtained
+by dividing the sum of the weighted growth rates by the sum of the
+population. The already calculated worldwide population growth rate was
+also saved in a separate dataset for comparison purposes.
+
+The libraries - `scales`, `dplyr`, `gridExtra` and `tidyverse` were used
+to prepare the data. The `scales` library was used to format the numbers
+in the plots, `dplyr` was used to reshape the data, `gridExtra` was used
+to arrange the plots in a grid and `tidyverse` was used to filter out
+the regions and groups of countries.
+
+Since the datasets from the World Bank data are in the same format, most
+of the analysis was abstracted away into a function that will be used
+further in the paper to prepare, clean and format the data for
+visualisations.
+
+### Other sources
+
+While most of the paper is based on data from the World Bank, there are
+also two other sources - United Nations and Our World in Data. These two
+sources are completely different from the World Bank and needed their
+own data preparation and cleaning. Also the data from the data from the
+UN came in Excel format, which needed another library - `readxl` to be
+read into R.
+
+Both of these were handled without creating abstraction functions as
+they were used only once in code, additionally the data from the Our
+World in Data was already in a long format, so it only needed to be
+cleaned, while the data from the UN needed to be reshaped to a long
+format, similarly to the World Bank data.
+
+More information about the data sources can be found in the Sources of
+Data chapter.
+
+## Sources of Data
 
 To study population growth across different facets of human life, this
 research has relied on data from several sources, including the World
 Bank, United Nations, and Our World in Data.
 
-## World Bank
+### World Bank
 
 The World Bank is renowned for providing a wide array of indicators
 related to population, education, and poverty. The following indicators
@@ -386,7 +388,7 @@ used in academic research and policy studies. However, it is important
 to consider potential data coverage or accuracy limitations for specific
 countries or time periods.
 
-## United Nations
+### United Nations
 
 The United Nations Department of Economic and Social Affairs provides
 population data through the World Population Prospects. This dataset
@@ -395,7 +397,7 @@ regions, including a range of demographic indicators such as population
 size, growth, and composition (United Nations, n.d.). The data is
 available at: <https://population.un.org/wpp/Download/>.
 
-## Our World in Data
+### Our World in Data
 
 Our World in Data is another data source utilized in this study. This
 non-profit research organization provides datasets and visualizations
@@ -409,7 +411,7 @@ It is important to note that while these data sources are widely
 recognized and respected, limitations such as data accuracy or coverage
 issues may be present for specific countries or time frames.
 
-# Technology Evaluation: R and R Markdown
+## Technology Evaluation: R and R Markdown
 
 R is a popular and widely-used programming language for statistical
 computing and graphics, which makes it an ideal choice for data analysis
